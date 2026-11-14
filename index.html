@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>沖繩 5 天 4 夜行程</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌺</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --s1:#bde9f7; --s2:#fff0f4; --sun:#ffd36b; --cloud:#ffffff; --sea1:#86d8e4; --sea2:#4fb8cc;
+  --pink:#ff8fab; --whale:#9ec5ff; --shell:#ffd0dc;
+  --ink:#2f2a4a; --sub:#6d6788; --card:#fffdf7; --bd:#2f2a4a; --sh:#2f2a4a;
+  --c1:#ffc2d1; --c2:#ffe08a; --c3:#b8ecd2; --c4:#b9d8ff; --c5:#dcc9ff; --c6:#ffd9b8;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --s1:#1b2145; --s2:#4d3163; --sun:#ffeaa8; --cloud:#6b5e96; --sea1:#2f6196; --sea2:#243f75;
+    --pink:#ff9dbb; --whale:#7f9ee0; --shell:#e9a3ba;
+    --ink:#fff4ff; --sub:#cbc3e3; --card:#2a2550; --bd:#9a8fd0; --sh:#0f0c26;
+    --c1:#8a4a66; --c2:#8a7433; --c3:#2f6a54; --c4:#3a5f93; --c5:#62499a; --c6:#8a5a38;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  min-height:100vh; color:var(--ink); background:linear-gradient(var(--s1),var(--s2)) fixed;
+  font-family:"Zen Maru Gothic","PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif; line-height:1.6;
+}
+#scene{position:fixed; inset:0; width:100%; height:100%; z-index:-1}
+main{max-width:640px; margin:0 auto; padding:0 16px calc(48px + env(safe-area-inset-bottom,0px))}
+header{text-align:center; padding:calc(26px + env(safe-area-inset-top,0px)) 8px 14px}
+h1{font-size:32px; font-weight:900; margin:0; letter-spacing:.03em; text-shadow:3px 3px 0 var(--pink)}
+header p{margin:6px 0 0; font-weight:500}
+.chips{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:12px}
+.chip{background:var(--card); border:2.5px solid var(--bd); border-radius:999px; padding:2px 14px; font-size:14px; font-weight:700; box-shadow:2px 2px 0 var(--sh)}
+nav{position:sticky; top:0; z-index:5; padding:calc(8px + env(safe-area-inset-top,0px)) 0 10px; margin:0 -16px; padding-left:16px; padding-right:16px;
+  background:linear-gradient(var(--s1) 70%, transparent)}
+[role=tablist]{display:flex; gap:8px; overflow-x:auto; padding:2px 2px 6px; scrollbar-width:none}
+[role=tablist]::-webkit-scrollbar{display:none}
+[role=tab]{
+  flex:1 0 auto; min-width:64px; font:inherit; color:var(--ink); background:var(--card); cursor:pointer;
+  border:2.5px solid var(--bd); border-radius:16px; padding:5px 10px 4px; text-align:center; line-height:1.25;
+  box-shadow:3px 3px 0 var(--sh); transition:transform .12s, box-shadow .12s;
+}
+[role=tab] small{display:block; font-size:12px; color:var(--sub); font-weight:500}
+[role=tab] b{display:block; font-size:16px; font-weight:900}
+[role=tab][aria-selected=true]{transform:translate(2px,2px); box-shadow:1px 1px 0 var(--sh); background:var(--tc)}
+[role=tab][aria-selected=true] small{color:var(--ink)}
+[role=tab]:focus-visible{outline:3px solid var(--pink); outline-offset:2px}
+[role=tabpanel]{
+  background:var(--card); border:2.5px solid var(--bd); border-radius:22px; padding:16px 16px 8px; margin-top:6px;
+  box-shadow:5px 5px 0 var(--sh);
+}
+[role=tabpanel][hidden]{display:none}
+.ttl{display:inline-block; background:var(--tc); border:2.5px solid var(--bd); border-radius:999px; padding:2px 16px;
+  font-size:18px; font-weight:900; margin:-32px 0 8px -4px; transform:rotate(-2deg); box-shadow:2px 2px 0 var(--sh)}
+.row{display:flex; gap:12px; padding:9px 0; border-top:2.5px dotted var(--bd)}
+.ttl + .row{border-top:0}
+.tm{flex:0 0 52px; color:var(--sub); font-weight:700; font-size:14px; padding-top:2px; font-variant-numeric:tabular-nums}
+.tx{flex:1; font-size:16px; font-weight:500}
+.nt{display:block; color:var(--sub); font-size:13px; font-weight:500}
+.chk .tm{flex-basis:24px; font-size:18px}
+footer{text-align:center; color:var(--ink); font-size:13px; margin-top:22px; font-weight:500}
+@media (max-width:380px){h1{font-size:27px} .tm{flex-basis:46px}}
+@media (prefers-reduced-motion:reduce){[role=tab]{transition:none}}
+</style>
+</head>
+<body>
+<svg id="scene" aria-hidden="true" viewBox="0 0 400 800" preserveAspectRatio="xMidYMax meet">
+  <defs>
+    <circle id="sSun" r="40"/>
+    <g id="sCld"><circle cx="0" cy="0" r="16"/><circle cx="22" cy="-10" r="20"/><circle cx="46" cy="0" r="16"/><rect x="-16" y="-2" width="78" height="18" rx="9"/></g>
+    <path id="sWhl" d="M-8 0 L-9 -50 C-22 -52 -48 -58 -62 -90 C-44 -78 -16 -82 0 -70 C16 -82 44 -78 62 -90 C48 -58 22 -52 9 -50 L8 0 Z"/>
+    <path id="sShl" d="M0 0 L-17 -22 Q-20 -38 0 -40 Q20 -38 17 -22 Z"/>
+    <circle id="sSpi" r="14"/>
+    <g id="sHib"><circle cx="0" cy="-15" r="12"/><circle cx="14" cy="-5" r="12"/><circle cx="9" cy="12" r="12"/><circle cx="-9" cy="12" r="12"/><circle cx="-14" cy="-5" r="12"/></g>
+  </defs>
+  <g id="art"></g>
+</svg>
+
+<main>
+<header>
+  <h1>沖繩 5 天 4 夜 🌺</h1>
+  <p>2027/1/10 日 到 1/14 四</p>
+  <div class="chips"><span class="chip">6 大 1 小</span><span class="chip">兩台車</span><span class="chip">那霸 + Onna</span></div>
+</header>
+<nav><div role="tablist" aria-label="行程日期" id="tabs"></div></nav>
+<div id="panels"></div>
+<footer>時間和車程是估算,出發前請在 Google Maps 再確認</footer>
+</main>
+
+<script>
+var NS='http://www.w3.org/2000/svg', art=document.getElementById('art');
+function S(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);(p||art).appendChild(e);return e}
+function stk(id,fill,x,y,sc,rot,w){
+  var g=S('g',{transform:'translate('+x+' '+y+') rotate('+rot+') scale('+sc+')'}), o=3/sc;
+  S('use',{href:'#'+id,fill:'var(--sh)',stroke:'var(--sh)','stroke-width':w,'stroke-linejoin':'round',transform:'translate('+o+' '+o+')'},g);
+  S('use',{href:'#'+id,fill:'var(--bd)',stroke:'var(--bd)','stroke-width':w,'stroke-linejoin':'round'},g);
+  S('use',{href:'#'+id,fill:fill,stroke:'none'},g);
+  return g}
+function line(d,g,w,c){S('path',{d:d,fill:'none',stroke:c||'var(--bd)','stroke-width':w,'stroke-linecap':'round'},g)}
+function wave(y,fill){
+  S('path',{d:'M0 '+y+' Q50 '+(y-26)+' 100 '+y+' T200 '+y+' T300 '+y+' T400 '+y+' V800 H0Z',fill:fill,stroke:'var(--bd)','stroke-width':3.5,'stroke-linejoin':'round'});
+  [40,170,290].forEach(function(x){line('M'+x+' '+(y+24)+' q8 -8 16 0 t16 0',art,3,'var(--cloud)')})}
+(function(){
+  var g=stk('sSun','var(--sun)',318,96,1,0,6);
+  S('circle',{cx:-13,cy:-4,r:3.5,fill:'var(--bd)'},g);S('circle',{cx:13,cy:-4,r:3.5,fill:'var(--bd)'},g);
+  S('circle',{cx:-24,cy:7,r:5,fill:'var(--pink)',opacity:.8},g);S('circle',{cx:24,cy:7,r:5,fill:'var(--pink)',opacity:.8},g);
+  line('M-9 8 Q0 17 9 8',g,3);
+  stk('sCld','var(--cloud)',30,170,1,0,6);stk('sCld','var(--cloud)',215,290,.8,0,6);stk('sCld','var(--cloud)',90,60,.6,0,6);
+  wave(690,'var(--sea1)');
+  stk('sWhl','var(--whale)',318,748,1,0,6);
+  [[262,672],[270,656],[376,664]].forEach(function(c){S('circle',{cx:c[0],cy:c[1],r:4.5,fill:'var(--cloud)',stroke:'var(--bd)','stroke-width':2.2})});
+  wave(740,'var(--sea2)');
+  g=stk('sShl','var(--shell)',120,780,.9,-14,6);[['M0 0L-8 -36'],['M0 0L0 -39'],['M0 0L8 -36'],['M0 0L-14 -30'],['M0 0L14 -30']].forEach(function(d){line(d[0],g,2)});
+  g=stk('sShl','var(--shell)',255,785,.75,18,6);[['M0 0L-8 -36'],['M0 0L0 -39'],['M0 0L8 -36']].forEach(function(d){line(d[0],g,2.4)});
+  g=stk('sSpi','var(--shell)',190,765,1,0,6);line('M0 0 a3 3 0 0 1 6 0 a6 6 0 0 1 -12 0 a9 9 0 0 1 18 0',g,2);
+  [[58,716,.95,12],[348,792,.6,-10]].forEach(function(h){
+    var f=stk('sHib','var(--pink)',h[0],h[1],h[2],h[3],6);
+    S('circle',{r:5,fill:'var(--sun)',stroke:'var(--bd)','stroke-width':2},f);line('M0 0 L9 -12',f,2.4)});
+})();
+var D=[
+{id:'d1',m:'1/10',w:'日',c:'--c1',t:'抵達、國際通',r:[
+['11:00','台中清泉崗機場二航廈集合'],['13:15','搭 JX302 飛那霸'],
+['15:45','落地,單軌到飯店放行李','Hotel Urbansea 2 Matsuo'],['17:00','國際通逛街、伴手禮'],
+['18:00','Kazuki 酒喜膳 晚餐','要先訂位'],['20:00','Elegran 西町本店 彈珠店','18 歲以上才能進,寶寶不能帶'],
+['21:00','國際通隨便一間居酒屋 宵夜'],['23:00','前回飯店,隔天 6:30 早餐']]},
+{id:'d2',m:'1/11',w:'一',c:'--c2',t:'取車日',r:[
+['06:30','あさとん食堂 和牛粥'],['08:00','波上宮'],['09:30','接駁車到租車公司,10:00 取兩台車'],
+['11:00','A 車親子組、B 車大人組分開走','A 兒童動物王國 / B 玉泉洞、沖繩世界'],['17:00','回那霸飯店會合,停好車'],
+['18:00','肉久茂地本店,再第二攤小量','要先訂位'],['19:45','4 人去 Charusan 6','其他人帶寶寶回飯店'],
+['20:30','看秀,20:20 前到,約 22:00 結束'],['22:15','鰓呼吸 久茂地店 暢飲宵夜','先訂位,確認深夜可暢飲'],['23:45','叫 Uber 回飯店']]},
+{id:'d3',m:'1/12',w:'二',c:'--c3',t:'漁師食堂、美國村、貓咖啡',r:[
+['09:00','退房'],['09:30','開車北上本部','車程約 1.5 到 2 小時'],
+['11:30','漁師食堂 大ばんぶる舞 午餐','進店寫名字候位,熱門菜會提早賣完'],['13:30','開車往北谷'],
+['15:00','美國村逛街、Pet Box 北谷店','Pet Box 約 19:00 關門'],['16:00','Puchi Marry 貓咖啡','先確認寶寶能否入場'],
+['17:45','開車到 Onna,入住泳池 villa','先確認入住時間'],['18:30','晚餐自煮或超市熟食']]},
+{id:'d4',m:'1/13',w:'三',c:'--c4',t:'Onna、讀谷散步、賞燈',r:[
+['09:30','萬座毛','海岸步道約 20 分鐘'],['10:30','おんなの駅','逛特產、買午餐'],
+['13:00','やちむんの里 陶器村散步','工坊和咖啡廳'],['14:30','座喜味城跡','世界遺產城跡,視野好'],
+['16:00','回 villa 休息','寶寶午睡、泳池'],['17:30','晚餐','讀谷附近或 villa'],
+['18:30','讀谷 琉球燈籠節','最後入園 21:30']]},
+{id:'d5',m:'1/14',w:'四',c:'--c5',t:'南下、海鮮、回家',r:[
+['08:30','退房,離開 Onna'],['09:00','殘波岬','沿路景點,萬座毛 Day 4 已去'],['12:00','道之驛糸滿 海鮮丼、買伴手禮'],
+['14:00','瀬長島ウミカジテラス 甜點','開車直接到,不用搭船'],['15:45','加油,16:15 還車'],['17:00','機場報到,18:50 飛機']]},
+{id:'todo',m:'待辦',w:'',c:'--c6',t:'出發前待辦',chk:1,r:[
+['☐','訂位:Kazuki、肉久茂地本店、鰓呼吸、Charusan 6'],['☐','確認 Puchi Marry 寶寶能否入場'],
+['☐','租車:兩台一起取,嬰兒座椅,護照、駕照加日文譯本'],['☐','Uber 綁信用卡,飯店設成常用地點'],
+['☐','確認 Onna villa 入住時間'],['☐','營業時間:漁師食堂、Pet Box、道之驛糸滿'],
+['☐','寶寶外套、背巾,排好輪流留守的人']]}
+];
+var tabs=document.getElementById('tabs'), panels=document.getElementById('panels');
+function el(t,c,x){var e=document.createElement(t); if(c)e.className=c; if(x!=null)e.textContent=x; return e}
+D.forEach(function(d,i){
+  var b=el('button'); b.setAttribute('role','tab'); b.id='t-'+d.id; b.setAttribute('aria-controls','p-'+d.id);
+  b.style.setProperty('--tc','var('+d.c+')');
+  b.appendChild(el('small',null,d.w?('Day '+(i+1)):'清單')); b.appendChild(el('b',null,d.w?d.m+' '+d.w:d.m));
+  b.addEventListener('click',function(){show(d.id,true)});
+  tabs.appendChild(b);
+  var p=el('section'); p.setAttribute('role','tabpanel'); p.id='p-'+d.id; p.setAttribute('aria-labelledby','t-'+d.id); p.hidden=true;
+  p.style.setProperty('--tc','var('+d.c+')');
+  p.appendChild(el('div','ttl',d.w?(d.m+' '+d.w+'・'+d.t):d.t));
+  d.r.forEach(function(r){
+    var row=el('div','row'+(d.chk?' chk':'')); row.appendChild(el('span','tm',r[0]));
+    var tx=el('span','tx',r[1]); if(r[2]) tx.appendChild(el('span','nt',r[2])); row.appendChild(tx); p.appendChild(row);
+  });
+  panels.appendChild(p);
+});
+function show(id,push){
+  D.forEach(function(d){
+    var on=d.id===id, t=document.getElementById('t-'+d.id);
+    t.setAttribute('aria-selected',on); t.tabIndex=on?0:-1; document.getElementById('p-'+d.id).hidden=!on;
+    if(on&&push){try{history.replaceState(null,'','#'+id)}catch(e){} t.scrollIntoView({block:'nearest',inline:'center'}); window.scrollTo(0,0)}
+  });
+}
+tabs.addEventListener('keydown',function(e){
+  var i=D.findIndex(function(d){return document.getElementById('t-'+d.id).getAttribute('aria-selected')==='true'});
+  if(e.key==='ArrowRight')i=(i+1)%D.length; else if(e.key==='ArrowLeft')i=(i+D.length-1)%D.length; else return;
+  show(D[i].id,true); document.getElementById('t-'+D[i].id).focus();
+});
+function start(){
+  var h=location.hash.slice(1), ok=D.some(function(d){return d.id===h});
+  if(!ok){var n=new Date(), k=n.getFullYear()*10000+(n.getMonth()+1)*100+n.getDate();
+    h=(k>=20270110&&k<=20270114)?'d'+(k-20270109):'d1'}
+  show(h,false);
+}
+window.addEventListener('hashchange',start); start();
+</script>
+</body>
+</html>
