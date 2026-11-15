@@ -8,214 +8,102 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
-:root{
-  --s1:#bde9f7; --s2:#fff0f4; --sun:#ffd36b; --cloud:#ffffff; --sea1:#86d8e4; --sea2:#4fb8cc;
-  --pink:#ff8fab; --whale:#9ec5ff; --shell:#ffd0dc;
-  --ink:#2f2a4a; --sub:#6d6788; --card:#fffdf7; --bd:#2f2a4a; --sh:#2f2a4a;
-  --c1:#ffc2d1; --c2:#ffe08a; --c3:#b8ecd2; --c4:#b9d8ff; --c5:#dcc9ff; --c6:#ffd9b8;
-}
-@media (prefers-color-scheme:dark){
-  :root{
-    --s1:#1b2145; --s2:#4d3163; --sun:#ffeaa8; --cloud:#6b5e96; --sea1:#2f6196; --sea2:#243f75;
-    --pink:#ff9dbb; --whale:#7f9ee0; --shell:#e9a3ba;
-    --ink:#fff4ff; --sub:#cbc3e3; --card:#2a2550; --bd:#9a8fd0; --sh:#0f0c26;
-    --c1:#8a4a66; --c2:#8a7433; --c3:#2f6a54; --c4:#3a5f93; --c5:#62499a; --c6:#8a5a38;
-  }
-}
-*{box-sizing:border-box}
-html,body{margin:0}
-body{
-  min-height:100vh; color:var(--ink); background:linear-gradient(var(--s1),var(--s2)) fixed;
-  font-family:"Zen Maru Gothic","PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif; line-height:1.6;
-}
-#scene{position:fixed; inset:0; width:100%; height:100%; z-index:-1}
-main{max-width:640px; margin:0 auto; padding:0 16px calc(48px + env(safe-area-inset-bottom,0px))}
-header{text-align:center; padding:calc(26px + env(safe-area-inset-top,0px)) 8px 14px}
-h1{font-size:32px; font-weight:900; margin:0; letter-spacing:.03em; text-shadow:3px 3px 0 var(--pink)}
-header p{margin:6px 0 0; font-weight:500}
-.chips{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:12px}
-.chip{background:var(--card); border:2.5px solid var(--bd); border-radius:999px; padding:2px 14px; font-size:14px; font-weight:700; box-shadow:2px 2px 0 var(--sh)}
-nav{position:sticky; top:0; z-index:5; padding:calc(8px + env(safe-area-inset-top,0px)) 0 10px; margin:0 -16px; padding-left:16px; padding-right:16px;
-  background:linear-gradient(var(--s1) 70%, transparent)}
-[role=tablist]{display:flex; gap:8px; overflow-x:auto; padding:2px 2px 6px; scrollbar-width:none}
-[role=tablist]::-webkit-scrollbar{display:none}
-[role=tab]{
-  flex:1 0 auto; min-width:64px; font:inherit; color:var(--ink); background:var(--card); cursor:pointer;
-  border:2.5px solid var(--bd); border-radius:16px; padding:5px 10px 4px; text-align:center; line-height:1.25;
-  box-shadow:3px 3px 0 var(--sh); transition:transform .12s, box-shadow .12s;
-}
-[role=tab] small{display:block; font-size:12px; color:var(--sub); font-weight:500}
-[role=tab] b{display:block; font-size:16px; font-weight:900}
-[role=tab][aria-selected=true]{transform:translate(2px,2px); box-shadow:1px 1px 0 var(--sh); background:var(--tc)}
-[role=tab][aria-selected=true] small{color:var(--ink)}
-[role=tab]:focus-visible{outline:3px solid var(--pink); outline-offset:2px}
-[role=tabpanel]{
-  background:var(--card); border:2.5px solid var(--bd); border-radius:22px; padding:16px 16px 8px; margin-top:6px;
-  box-shadow:5px 5px 0 var(--sh);
-}
-[role=tabpanel][hidden]{display:none}
-.ttl{display:inline-block; background:var(--tc); border:2.5px solid var(--bd); border-radius:999px; padding:2px 16px;
-  font-size:18px; font-weight:900; margin:-32px 0 8px -4px; transform:rotate(-2deg); box-shadow:2px 2px 0 var(--sh)}
-.row{display:flex; gap:12px; padding:9px 0; border-top:2.5px dotted var(--bd)}
-.ttl + .row{border-top:0}
-.tm{flex:0 0 52px; color:var(--sub); font-weight:700; font-size:14px; padding-top:2px; font-variant-numeric:tabular-nums}
-.tx{flex:1; font-size:16px; font-weight:500}
-.nt{display:block; color:var(--sub); font-size:13px; font-weight:500}
-.tk,.pl{display:block; font-size:13px; font-weight:500; margin-top:3px}
-.tk::before,.pl::before{display:inline-block; font-size:11px; font-weight:900; border:2px solid var(--bd); border-radius:999px; padding:0 8px; margin-right:6px; color:var(--ink); line-height:1.4}
-.tk::before{content:"消費"; background:var(--c2)}
-.pl::before{content:"目的"; background:var(--c3)}
-.chk .tm{flex-basis:24px; font-size:18px}
-footer{text-align:center; color:var(--ink); font-size:13px; margin-top:22px; font-weight:500}
-@media (max-width:380px){h1{font-size:27px} .tm{flex-basis:46px}}
-@media (prefers-reduced-motion:reduce){[role=tab]{transition:none}}
+:root{--s1:#bde9f7;--s2:#fff0f4;--sun:#ffd36b;--cloud:#fff;--sea1:#86d8e4;--sea2:#4fb8cc;--pink:#ff8fab;--whale:#9ec5ff;--shell:#ffd0dc;--ink:#2f2a4a;--sub:#6d6788;--card:#fffdf7;--bd:#2f2a4a;--sh:#2f2a4a;--c1:#ffc2d1;--c2:#ffe08a;--c3:#b8ecd2;--c4:#b9d8ff;--c5:#dcc9ff;--c6:#ffd9b8}
+@media(prefers-color-scheme:dark){:root{--s1:#1b2145;--s2:#4d3163;--sun:#ffeaa8;--cloud:#6b5e96;--sea1:#2f6196;--sea2:#243f75;--pink:#ff9dbb;--whale:#7f9ee0;--shell:#e9a3ba;--ink:#fff4ff;--sub:#cbc3e3;--card:#2a2550;--bd:#9a8fd0;--sh:#0f0c26;--c1:#8a4a66;--c2:#8a7433;--c3:#2f6a54;--c4:#3a5f93;--c5:#62499a;--c6:#8a5a38}}
+*{box-sizing:border-box}html,body{margin:0}body{min-height:100vh;color:var(--ink);background:linear-gradient(var(--s1),var(--s2)) fixed;font-family:"Zen Maru Gothic","PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.6}
+#scene{position:fixed;inset:0;width:100%;height:100%;z-index:-1}main{max-width:640px;margin:0 auto;padding:0 16px calc(48px + env(safe-area-inset-bottom,0px))}
+#wx{margin-top:calc(14px + env(safe-area-inset-top,0px));background:var(--card);border:2.5px solid var(--bd);border-radius:22px;padding:12px 14px 10px;box-shadow:4px 4px 0 var(--sh)}
+.wnow{display:flex;align-items:center;gap:12px}.wi{font-size:44px;line-height:1}.wnt{font-size:22px;font-weight:900;line-height:1.2}.wns{font-size:13px;color:var(--sub);font-weight:500}
+.wxhead{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;font-weight:700;margin-bottom:8px}
+#wxRefresh{white-space:nowrap;flex:0 0 auto;font:inherit;font-size:12px;font-weight:800;color:var(--ink);background:var(--c3);border:2px solid var(--bd);border-radius:999px;padding:1px 10px;cursor:pointer;box-shadow:2px 2px 0 var(--sh)}#wxRefresh:disabled{opacity:.6}
+.wxplaces{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:10px}.wxplace{font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--bd);border-radius:12px;padding:3px 0;text-align:center;line-height:1.2;cursor:pointer}.wxplace b{display:block;font-size:11px;font-weight:800}.wxplace span{display:block;font-size:18px}.wxplace small{display:block;font-size:11px;font-weight:700}.wxplace.active{background:var(--c4);box-shadow:2px 2px 0 var(--sh)}
+.wxstats{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:10px}.wxstat{background:var(--bg2,transparent);border:2px dashed var(--bd);border-radius:10px;padding:3px 4px;font-size:12px;text-align:center;line-height:1.3}.wxstat b{display:block;font-size:10.5px;font-weight:700;color:var(--sub)}
+.wxhour{display:flex;gap:6px;overflow-x:auto;margin-top:10px;padding-bottom:4px;scrollbar-width:thin}.wxhouritem{flex:0 0 auto;min-width:54px;text-align:center;font-size:12px;line-height:1.3;border:2px solid var(--bd);border-radius:12px;padding:3px 4px;background:var(--card)}.wxhouritem .e{font-size:18px}.wxhouritem small{display:block;font-size:10.5px;color:var(--sub)}
+.wdays{display:flex;gap:6px;overflow-x:auto;margin-top:10px;padding-bottom:4px}.wd{flex:0 0 auto;min-width:62px;background:var(--c4);border:2px solid var(--bd);border-radius:14px;padding:4px 2px;text-align:center;line-height:1.25}.wd small{display:block;font-size:11px;font-weight:700}.wd .e{font-size:22px;display:block}.wd b{display:block;font-size:12px;font-weight:900}.wd i{display:block;font-style:normal;font-size:11px;color:var(--sub)}
+.wlk{text-align:center;margin-top:6px}.wlk a{font-size:12px;font-weight:800;color:var(--ink);text-decoration:none;background:var(--c3);border:2px solid var(--bd);border-radius:999px;padding:1px 12px;box-shadow:2px 2px 0 var(--sh)}.wcap{font-size:11px;color:var(--sub);margin-top:6px;text-align:center}
+header{text-align:center;padding:18px 8px 14px}h1{font-size:32px;font-weight:900;margin:0;letter-spacing:.03em;text-shadow:3px 3px 0 var(--pink)}header p{margin:6px 0 0;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}.chip{background:var(--card);border:2.5px solid var(--bd);border-radius:999px;padding:2px 14px;font-size:14px;font-weight:700;box-shadow:2px 2px 0 var(--sh)}
+nav{position:sticky;top:0;z-index:5;padding:calc(8px + env(safe-area-inset-top,0px)) 0 10px;margin:0 -16px;padding-left:16px;padding-right:16px;background:linear-gradient(var(--s1) 70%,transparent)}
+[role=tablist]{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:none}[role=tablist]::-webkit-scrollbar{display:none}
+[role=tab]{flex:1 0 auto;min-width:64px;font:inherit;color:var(--ink);background:var(--card);cursor:pointer;border:2.5px solid var(--bd);border-radius:16px;padding:5px 10px 4px;text-align:center;line-height:1.25;box-shadow:3px 3px 0 var(--sh);transition:transform .12s,box-shadow .12s}
+[role=tab] small{display:block;font-size:12px;color:var(--sub);font-weight:500}[role=tab] b{display:block;font-size:16px;font-weight:900}[role=tab][aria-selected=true]{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--sh);background:var(--tc)}[role=tab][aria-selected=true] small{color:var(--ink)}[role=tab]:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+[role=tabpanel]{background:var(--card);border:2.5px solid var(--bd);border-radius:22px;padding:16px 16px 8px;margin-top:6px;box-shadow:5px 5px 0 var(--sh)}[role=tabpanel][hidden]{display:none}
+.ttl{display:inline-block;background:var(--tc);border:2.5px solid var(--bd);border-radius:999px;padding:2px 16px;font-size:18px;font-weight:900;margin:-32px 0 8px -4px;transform:rotate(-2deg);box-shadow:2px 2px 0 var(--sh)}
+.row{display:flex;gap:12px;padding:9px 0;border-top:2.5px dotted var(--bd)}.ttl+.row{border-top:0}.tm{flex:0 0 52px;color:var(--sub);font-weight:700;font-size:14px;padding-top:2px;font-variant-numeric:tabular-nums}.tx{flex:1;font-size:16px;font-weight:500}.nt{display:block;color:var(--sub);font-size:13px;font-weight:500}
+.mp{display:flex;flex-wrap:wrap;gap:6px;margin-top:5px}.mp a{font-size:12px;font-weight:800;color:var(--ink);text-decoration:none;background:var(--c4);border:2px solid var(--bd);border-radius:999px;padding:1px 10px;box-shadow:2px 2px 0 var(--sh)}.mp a.bk{background:var(--c1)}
+.tk,.pl{display:block;font-size:13px;font-weight:500;margin-top:3px}.tk:before,.pl:before{display:inline-block;font-size:11px;font-weight:900;border:2px solid var(--bd);border-radius:999px;padding:0 8px;margin-right:6px;color:var(--ink);line-height:1.4}.tk:before{content:"消費";background:var(--c2)}.pl:before{content:"目的";background:var(--c3)}.chk .tm{flex-basis:24px;font-size:18px}
+footer{text-align:center;color:var(--ink);font-size:13px;margin-top:22px;font-weight:500}@media(max-width:380px){h1{font-size:27px}.tm{flex-basis:46px}}@media(prefers-reduced-motion:reduce){[role=tab]{transition:none}}
 </style>
 </head>
 <body>
 <svg id="scene" aria-hidden="true" viewBox="0 0 400 800" preserveAspectRatio="xMidYMax meet">
-  <defs>
-    <circle id="sSun" r="40"/>
-    <g id="sCld"><circle cx="0" cy="0" r="16"/><circle cx="22" cy="-10" r="20"/><circle cx="46" cy="0" r="16"/><rect x="-16" y="-2" width="78" height="18" rx="9"/></g>
-    <path id="sWhl" d="M-8 0 L-9 -50 C-22 -52 -48 -58 -62 -90 C-44 -78 -16 -82 0 -70 C16 -82 44 -78 62 -90 C48 -58 22 -52 9 -50 L8 0 Z"/>
-    <path id="sShl" d="M0 0 L-17 -22 Q-20 -38 0 -40 Q20 -38 17 -22 Z"/>
-    <circle id="sSpi" r="14"/>
-    <g id="sHib"><circle cx="0" cy="-15" r="12"/><circle cx="14" cy="-5" r="12"/><circle cx="9" cy="12" r="12"/><circle cx="-9" cy="12" r="12"/><circle cx="-14" cy="-5" r="12"/></g>
-  </defs>
-  <g id="art"></g>
-</svg>
-
+<defs><circle id="sSun" r="40"/><g id="sCld"><circle cx="0" cy="0" r="16"/><circle cx="22" cy="-10" r="20"/><circle cx="46" cy="0" r="16"/><rect x="-16" y="-2" width="78" height="18" rx="9"/></g><path id="sWhl" d="M-8 0 L-9 -50 C-22 -52 -48 -58 -62 -90 C-44 -78 -16 -82 0 -70 C16 -82 44 -78 62 -90 C48 -58 22 -52 9 -50 L8 0 Z"/><path id="sShl" d="M0 0 L-17 -22 Q-20 -38 0 -40 Q20 -38 17 -22 Z"/><circle id="sSpi" r="14"/><g id="sHib"><circle cx="0" cy="-15" r="12"/><circle cx="14" cy="-5" r="12"/><circle cx="9" cy="12" r="12"/><circle cx="-9" cy="12" r="12"/><circle cx="-14" cy="-5" r="12"/></g></defs><g id="art"></g></svg>
 <main>
-<header>
-  <h1>沖繩 5 天 4 夜 🌺</h1>
-  <p>2027/1/10 日 到 1/14 四</p>
-  <div class="chips"><span class="chip">6 大 1 小</span><span class="chip">兩台車</span><span class="chip">那霸 + Onna</span></div>
-</header>
-<nav><div role="tablist" aria-label="行程日期" id="tabs"></div></nav>
-<div id="panels"></div>
-<footer>票價單位為日圓,時間、車程和票價是我查到或估算的資料,出發前請以官網和 Google Maps 為準</footer>
+<section id="wx" aria-label="天氣">
+<div class="wxhead"><div id="wxTime">載入天氣…</div><button type="button" id="wxRefresh">↻ 更新</button></div>
+<div class="wxplaces" id="wxPlaces"></div>
+<div class="wnow"><span class="wi" id="wnI">⏳</span><div><div class="wnt" id="wnT">載入中…</div><div class="wns" id="wnS"></div></div></div>
+<div class="wxstats" id="wxStats"></div><div class="wxhour" id="wxHour"></div><div class="wdays" id="wDays"></div><div class="wcap" id="wCap"></div>
+<div class="wlk"><a href="https://www.jma.go.jp/bosai/forecast/#area_type=offices&area_code=471000" target="_blank" rel="noopener">🔗 日本氣象廳(JMA)沖繩本島預報</a></div>
+</section>
+<header><h1>沖繩 5 天 4 夜 🌺</h1><p>2027/1/10 日 到 1/14 四</p></header>
+<nav><div role="tablist" aria-label="行程日期" id="tabs"></div></nav><div id="panels"></div>
+<footer>票價單位為日圓，時間、車程和票價是我查到或估算的資料，出發前請以官網和 Google Maps 為準</footer>
 </main>
-
 <script>
-var NS='http://www.w3.org/2000/svg', art=document.getElementById('art');
+var NS='http://www.w3.org/2000/svg',art=document.getElementById('art');
 function S(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);(p||art).appendChild(e);return e}
-function stk(id,fill,x,y,sc,rot,w){
-  var g=S('g',{transform:'translate('+x+' '+y+') rotate('+rot+') scale('+sc+')'}), o=3/sc;
-  S('use',{href:'#'+id,fill:'var(--sh)',stroke:'var(--sh)','stroke-width':w,'stroke-linejoin':'round',transform:'translate('+o+' '+o+')'},g);
-  S('use',{href:'#'+id,fill:'var(--bd)',stroke:'var(--bd)','stroke-width':w,'stroke-linejoin':'round'},g);
-  S('use',{href:'#'+id,fill:fill,stroke:'none'},g);
-  return g}
+function stk(id,fill,x,y,sc,rot,w){var g=S('g',{transform:'translate('+x+' '+y+') rotate('+rot+') scale('+sc+')'}),o=3/sc;S('use',{href:'#'+id,fill:'var(--sh)',stroke:'var(--sh)','stroke-width':w,'stroke-linejoin':'round',transform:'translate('+o+' '+o+')'},g);S('use',{href:'#'+id,fill:'var(--bd)',stroke:'var(--bd)','stroke-width':w,'stroke-linejoin':'round'},g);S('use',{href:'#'+id,fill:fill,stroke:'none'},g);return g}
 function line(d,g,w,c){S('path',{d:d,fill:'none',stroke:c||'var(--bd)','stroke-width':w,'stroke-linecap':'round'},g)}
-function wave(y,fill){
-  S('path',{d:'M0 '+y+' Q50 '+(y-26)+' 100 '+y+' T200 '+y+' T300 '+y+' T400 '+y+' V800 H0Z',fill:fill,stroke:'var(--bd)','stroke-width':3.5,'stroke-linejoin':'round'});
-  [40,170,290].forEach(function(x){line('M'+x+' '+(y+24)+' q8 -8 16 0 t16 0',art,3,'var(--cloud)')})}
-(function(){
-  var g=stk('sSun','var(--sun)',318,96,1,0,6);
-  S('circle',{cx:-13,cy:-4,r:3.5,fill:'var(--bd)'},g);S('circle',{cx:13,cy:-4,r:3.5,fill:'var(--bd)'},g);
-  S('circle',{cx:-24,cy:7,r:5,fill:'var(--pink)',opacity:.8},g);S('circle',{cx:24,cy:7,r:5,fill:'var(--pink)',opacity:.8},g);
-  line('M-9 8 Q0 17 9 8',g,3);
-  stk('sCld','var(--cloud)',30,170,1,0,6);stk('sCld','var(--cloud)',215,290,.8,0,6);stk('sCld','var(--cloud)',90,60,.6,0,6);
-  wave(690,'var(--sea1)');
-  stk('sWhl','var(--whale)',318,748,1,0,6);
-  [[262,672],[270,656],[376,664]].forEach(function(c){S('circle',{cx:c[0],cy:c[1],r:4.5,fill:'var(--cloud)',stroke:'var(--bd)','stroke-width':2.2})});
-  wave(740,'var(--sea2)');
-  g=stk('sShl','var(--shell)',120,780,.9,-14,6);[['M0 0L-8 -36'],['M0 0L0 -39'],['M0 0L8 -36'],['M0 0L-14 -30'],['M0 0L14 -30']].forEach(function(d){line(d[0],g,2)});
-  g=stk('sShl','var(--shell)',255,785,.75,18,6);[['M0 0L-8 -36'],['M0 0L0 -39'],['M0 0L8 -36']].forEach(function(d){line(d[0],g,2.4)});
-  g=stk('sSpi','var(--shell)',190,765,1,0,6);line('M0 0 a3 3 0 0 1 6 0 a6 6 0 0 1 -12 0 a9 9 0 0 1 18 0',g,2);
-  [[58,716,.95,12],[348,792,.6,-10]].forEach(function(h){
-    var f=stk('sHib','var(--pink)',h[0],h[1],h[2],h[3],6);
-    S('circle',{r:5,fill:'var(--sun)',stroke:'var(--bd)','stroke-width':2},f);line('M0 0 L9 -12',f,2.4)});
-})();
+function wave(y,fill){S('path',{d:'M0 '+y+' Q50 '+(y-26)+' 100 '+y+' T200 '+y+' T300 '+y+' T400 '+y+' V800 H0Z',fill:fill,stroke:'var(--bd)','stroke-width':3.5,'stroke-linejoin':'round'});[40,170,290].forEach(x=>line('M'+x+' '+(y+24)+' q8 -8 16 0 t16 0',art,3,'var(--cloud)'))}
+(function(){var g=stk('sSun','var(--sun)',318,96,1,0,6);S('circle',{cx:-13,cy:-4,r:3.5,fill:'var(--bd)'},g);S('circle',{cx:13,cy:-4,r:3.5,fill:'var(--bd)'},g);S('circle',{cx:-24,cy:7,r:5,fill:'var(--pink)',opacity:.8},g);S('circle',{cx:24,cy:7,r:5,fill:'var(--pink)',opacity:.8},g);line('M-9 8 Q0 17 9 8',g,3);stk('sCld','var(--cloud)',30,170,1,0,6);stk('sCld','var(--cloud)',215,290,.8,0,6);stk('sCld','var(--cloud)',90,60,.6,0,6);wave(690,'var(--sea1)');stk('sWhl','var(--whale)',318,748,1,0,6);[[262,672],[270,656],[376,664]].forEach(c=>S('circle',{cx:c[0],cy:c[1],r:4.5,fill:'var(--cloud)',stroke:'var(--bd)','stroke-width':2.2}));wave(740,'var(--sea2)');g=stk('sShl','var(--shell)',120,780,.9,-14,6);['M0 0L-8 -36','M0 0L0 -39','M0 0L8 -36','M0 0L-14 -30','M0 0L14 -30'].forEach(d=>line(d,g,2));g=stk('sShl','var(--shell)',255,785,.75,18,6);['M0 0L-8 -36','M0 0L0 -39','M0 0L8 -36'].forEach(d=>line(d,g,2.4));g=stk('sSpi','var(--shell)',190,765,1,0,6);line('M0 0 a3 3 0 0 1 6 0 a6 6 0 0 1 -12 0 a9 9 0 0 1 18 0',g,2);[[58,716,.95,12],[348,792,.6,-10]].forEach(h=>{var f=stk('sHib','var(--pink)',h[0],h[1],h[2],h[3],6);S('circle',{r:5,fill:'var(--sun)',stroke:'var(--bd)','stroke-width':2},f);line('M0 0 L9 -12',f,2.4)})})();
+var MQ={"大創 The Daiso D-naha(國際通,4 樓)":"The Daiso D-naha 那覇 牧志1丁目19-29","酒喜膳 Kazuki 晚餐":"酒喜膳 一喜喜 那覇市松山1-15-20","西町 Elegran 彈珠店":"Elegran 西町 那覇 パチンコ","波之上朝豚食堂(あさとん食堂),當早午餐":"波の上 あさとん食堂","波上宮":"波上宮 那覇","B 車:首里城公園":"首里城公園","B 車:達摩寺(首里赤田町)":"達摩寺 沖縄県那覇市首里赤田町1-5-1","B 車:玉泉洞、沖繩世界(王國村)":"おきなわワールド 玉泉洞","B 車:沖宮":"沖宮 那覇市奥武山町44","肉久茂地本店,再第二攤小量":"肉久茂地本店 那覇","4 人去 Churasun 6 夜秀(ちゅらさん6)":"ちゅらさん6 Churasun6 那覇","看秀,20:20 前到,約 22:00 結束":"ちゅらさん6 Churasun6 那覇","鰓呼吸 久茂地店 海鮮居酒屋":"鰓呼吸 那覇久茂地店 久茂地2-6-16","牧志公設市場 吃海鮮":"牧志公設市場","美國村 寵物用品 Pet Box 北谷店":"Pet Box 北谷店 美浜","Puchi Marry 貓咪咖啡廳":"Puchi Marry 北谷 猫カフェ","釣魚探險之國 沖繩(釣って見つけるぼうけんの国)":"釣って見つけるぼうけんの国 沖縄 うるま市石川3355-1","漁師食堂 大盤振舞(大ばんぶる舞)午餐":"漁師食堂 大ばんぶる舞 本部","KOURI SHRIMP 古宇利蝦蝦飯(古宇利島)":"KOURI SHRIMP 今帰仁村古宇利314","古宇利海塔":"古宇利オーシャンタワー","許田休息站(道の駅許田)":"道の駅 許田","万座毛(恩納村)看夕陽":"万座毛","おむすび茶屋 BURUNO(ブルーノ)早餐外帶":"おむすび茶屋 BURUNO 恩納村谷茶123","殘波岬":"残波岬","3COINS +plus 那霸 Main Place 店":"3COINS+plus 那覇メインプレイス店","糸滿魚市場(道之驛糸滿)海鮮丼、買伴手禮":"道の駅 いとまん","還車":"沖縄県豊見城市座安315-7","機場報到,18:50 飛機":"那覇空港 国際線ターミナル","台中清泉崗機場二航廈集合":"台中清泉崗國際機場 第二航廈","落地,單軌到飯店放行李":[["機場","那覇空港"],["飯店","Hotel Urbansea 2 那覇市松尾2丁目8-45"]],"分車:A 車親子組去沖繩兒童王國,B 車大人組去首里城":[["兒童王國","沖縄こどもの国"],["首里城","首里城公園"]],"回飯店,隔天可以睡晚一點":"Hotel Urbansea 2 那覇市松尾2丁目8-45","飯店睡到飽,慢慢出門":"Hotel Urbansea 2 那覇市松尾2丁目8-45","退房":"Hotel Urbansea 2 那覇市松尾2丁目8-45","退房,離開 Onna":"グランディオーソ沖縄プールヴィラ恩納13 恩納村仲間2288","入住 Onna 泳池 villa":"グランディオーソ沖縄プールヴィラ恩納13 恩納村仲間2288","回 villa 休息":"グランディオーソ沖縄プールヴィラ恩納13 恩納村仲間2288","從 villa 出發去本部":"グランディオーソ沖縄プールヴィラ恩納13 恩納村仲間2288","好市多 南城倉庫店(含加油)":"コストコ 沖縄南城倉庫店","機場外接駁車乘車處,搭租車公司免費接駁車":"Naha Airport Rent a Car Pickup Station 那覇市安次嶺"};
+var BK={"酒喜膳 Kazuki 晚餐":[["🎫 訂位(Gurunavi,免費即時)","https://gurunavi.com/en/f187800/rst"],["🎫 FunNow 訂套餐","https://www.myfunnow.com/en/products/3651243529790"],["📞 電話 098-863-8089","tel:+81988638089"]],"鰓呼吸 久茂地店 海鮮居酒屋":[["🎫 Gurunavi 店頁","https://gurunavi.com/en/f734701/rst"],["📞 電話訂位 098-868-8388","tel:+81988688388"]],"4 人去 Churasun 6 夜秀(ちゅらさん6)":[["🎫 KKday 訂票","https://www.kkday.com/en-in/product/181495"],["🎫 Klook 搜尋","https://www.klook.com/zh-TW/search/result/?query=Churasun6"]],"B 車:首里城公園":[["🎫 官方預約正殿","https://oki-park.jp/shurijo/"],["🎫 KKday 搜尋","https://www.kkday.com/zh-tw/product/productlist?keyword=%E9%A6%96%E9%87%8C%E5%9F%8E"],["🎫 Klook 搜尋","https://www.klook.com/zh-TW/search/result/?query=%E9%A6%96%E9%87%8C%E5%9F%8E"]],"B 車:玉泉洞、沖繩世界(王國村)":[["🎫 官方網站","https://www.gyokusendo.co.jp/okinawaworld/"],["🎫 KKday 搜尋","https://www.kkday.com/zh-tw/product/productlist?keyword=%E6%B2%96%E7%B9%A9%E4%B8%96%E7%95%8C%20%E7%8E%89%E6%B3%89%E6%B4%9E"],["🎫 Klook 搜尋","https://www.klook.com/zh-TW/search/result/?query=%E6%B2%96%E7%B9%A9%E4%B8%96%E7%95%8C%20%E7%8E%89%E6%B3%89%E6%B4%9E"]],"釣魚探險之國 沖繩(釣って見つけるぼうけんの国)":[["🎫 官方網站","https://boukennokuni.com/"],["🎫 KKday 搜尋","https://www.kkday.com/zh-tw/product/productlist?keyword=%E9%87%A3%E9%AD%9A%E6%8E%A2%E9%9A%AA%E4%B9%8B%E5%9C%8B"],["🎫 Klook 搜尋","https://www.klook.com/zh-TW/search/result/?query=%E9%87%A3%E9%AD%9A%E6%8E%A2%E9%9A%AA%E4%B9%8B%E5%9C%8B"]],"古宇利海塔":[["🎫 官方網站","https://book.kouri-oceantower.com/"],["🎫 KKday 搜尋","https://www.kkday.com/zh-tw/product/productlist?keyword=%E5%8F%A4%E5%AE%87%E5%88%A9%E6%B5%B7%E5%A1%94"],["🎫 Klook 搜尋","https://www.klook.com/zh-TW/search/result/?query=%E5%8F%A4%E5%AE%87%E5%88%A9%E6%B5%B7%E5%A1%94"]]};
 var D=[
-{id:'d1',m:'1/10',w:'日',c:'--c1',t:'抵達、國際通',r:[
-['11:00','台中清泉崗機場二航廈集合'],['13:15','搭星宇航空 JX302 飛那霸'],
-['15:45','落地,單軌到飯店放行李','松尾 2 號城市海洋飯店'],
-['17:00','國際通逛街、伴手禮','','免費逛街,買多少付多少','藥妝、伴手禮、沖繩特產店'],
-['17:30','大創 The Daiso D-naha(國際通,4 樓)','10:00 到 21:00,在牧志 1 丁目,離美榮橋站近','百圓雜貨,買多少付多少','生活雜貨、美妝、零食、伴手禮小物'],
-['18:00','酒喜膳 Kazuki 晚餐','要先訂位','價位偏高,套餐價格請看 Google Maps 菜單','和牛壽喜燒、涮涮鍋、套餐'],
-['20:00','西町 Elegran 彈珠店','18 歲以上才能進,小朋友不能帶','無入場費,依玩的量付費,我沒查到價格','彈珠機、柏青哥、老虎機'],
-['21:00','國際通隨便一間居酒屋 宵夜'],['23:00','回飯店,隔天可以睡晚一點']]},
-{id:'d2',m:'1/11',w:'一',c:'--c2',t:'取車日',r:[
-['08:30','飯店睡到飽,慢慢出門','先不趕早餐,等取車再吃'],
-['09:15','單軌或計程車到租車接駁處,10:00 取兩台車','兩台一起取,記得兒童座椅'],
-['11:15','波之上朝豚食堂(あさとん食堂),當早午餐','每天 06:00 到 13:30,掃碼點餐,11:15 到還來得及','約 1,000 到 2,000 日圓','和牛粥、あさとん汁定食'],
-['12:00','波上宮','就在食堂旁邊,走路即可','參拜通常免費,御守另計','參拜、買御守、看海'],
-['12:30','分車:A 車親子組去沖繩兒童王國,B 車大人組去首里城','A 車約 40 分鐘,B 車約 20 分鐘','A 車:16 歲以上 1,000 日圓,15 歲以下免費(3 歲小朋友免費)','兒童王國約 150 種動物、神奇博物館、小火車和旋轉木馬(機動遊戲另收費)'],
-['13:00','B 車:首里城公園','正殿 2026/11/23 重新開放,進正殿要預約 30 分鐘一檔的時段','收費區大人 1,000 日圓','正殿、城牆、世界遺產城跡'],
-['13:45','B 車:達摩寺(首里赤田町)','每天 07:00 到 18:00,離首里城很近,先抓 30 分鐘','參拜費用我沒查到','參拜、買達摩御守(很搶手,建議早點到)、本堂天花板龍神圖'],
-['15:00','B 車:玉泉洞、沖繩世界(王國村)','最後入園 16:00,17:30 關門,約玩 1 小時 45 分','大人 2,000 日圓','玉泉洞鐘乳石洞、琉球王國城下町、太鼓表演'],
-['17:30','B 車:沖宮','24 小時開放,在奧武山公園裡;冬天約 18:00 天黑,結帳可刷台灣悠遊卡','參拜通常免費,御守另計','參拜、買御守、看海邊神社'],
-['18:20','B 車直接去久茂地,A 車從飯店過去,餐廳會合','A 車下午先回飯店休息、放東西'],
-['18:30','肉久茂地本店,再第二攤小量','要先訂位','約 3,000 到 7,000 日圓,低消每人一杯飲料','燒肉、和牛拼盤、厚切牛舌'],
-['19:45','4 人去 Churasun 6 夜秀(ちゅらさん6)','其他人帶小朋友回飯店','入場費我沒查到,小費券另購;票可以在 KKday 訂(我查到有這個商品,Klook 沒查到)','夜間表演秀,買小費券可跟表演者合照'],
-['20:30','看秀,20:20 前到,約 22:00 結束','未滿 20 歲不能入場'],
-['22:15','鰓呼吸 久茂地店 海鮮居酒屋','週一營業到 24:00,食物最後點餐 23:00、飲料 23:30,所以 2 小時暢飲喝不滿;訂位:Tabelog 頁面寫不能訂,改用 Japanticket 網站或打電話 098-868-8388','2 小時暢飲 1,870 日圓(含一杯生啤),生啤暢飲加 550 日圓','烤扇貝、烤鮪魚下巴、海葡萄'],
-['23:45','叫 Uber 回飯店']]},
-{id:'d3',m:'1/12',w:'二',c:'--c3',t:'市場、貓咖啡、釣魚樂園',r:[
-['09:30','退房'],
-['10:00','牧志公設市場 吃海鮮','','入場免費,海鮮依選購付費,2 樓代煮另收費','1 樓挑海鮮,2 樓請店家煮'],
-['12:30','美國村 寵物用品 Pet Box 北谷店','約 19:00 關門','逛街免費','寵物食品、用品'],
-['13:15','Puchi Marry 貓咪咖啡廳','先確認 3 歲小朋友能否入場','包日約 2,300 日圓(平日)、2,500 日圓(週末),未稅,舊資料','和小貓玩、飲料續杯'],
-['15:15','釣魚探險之國 沖繩(釣って見つけるぼうけんの国)','18:00 打烊,平日 12:00 開,週五公休;門票可在官網(boukennokuni.com)、Klook、Over The Planet 線上訂','小學生以下 50 分鐘約 500 日圓,國中以上約 800 日圓,資料不一致','釣熱帶魚、寶石挖掘、化石、釣螯蝦和寄居蟹'],
-['17:30','入住 Onna 泳池 villa','先確認入住時間'],['18:30','晚餐自煮或超市熟食']]},
-{id:'d4',m:'1/13',w:'三',c:'--c4',t:'漁師食堂、古宇利',r:[
-['09:00','從 villa 出發去本部','車程約 40 到 50 分鐘'],
-['10:00','漁師食堂 大盤振舞(大ばんぶる舞)午餐','每天 10:00 到 16:00,一開門就到,進店寫名字和人數候位,鰻魚飯要直接跟店員點','約 1,000 到 2,000 日圓,份量大,可共食','烤鰻魚飯、海鮮定食'],
-['12:45','KOURI SHRIMP 古宇利蝦蝦飯(古宇利島)','每天 11:00 到 16:00(點餐到 15:00),不能訂位,可刷卡;臨時休息會在 SNS 公告;漁師食堂吃很飽的話可以當點心共食','約 1,000 到 2,000 日圓','蒜味蝦飯、香辣奶油蒜蝦、巴西莓碗'],
-['13:30','古宇利海塔','10:00 到 18:00,最後入園 17:30','16 歲以上 1,000 日圓,6 到 15 歲 500 日圓,6 歲以下免費(3 歲小朋友免費)','自動小車、貝殼博物館、82 公尺展望塔'],
-['15:15','許田休息站(道の駅許田)','休息、買甜點','入場免費','山原特產、伴手禮'],
-['16:15','回 villa 休息','小朋友午睡、泳池'],
-['17:15','万座毛(恩納村)看夕陽','11 到 2 月開到 19:00,冬天日落約 17:50,日落前 15 到 20 分鐘到;風大注意安全,停留在圍欄內','展望台約 100 日圓,小學以下免費(我查到的舊資料)','象鼻岩、海崖、夕陽剪影'],
-['18:30','晚餐','villa 附近或自煮']]},
-{id:'d5',m:'1/14',w:'四',c:'--c5',t:'沿路南下、糸滿、回家',r:[
-['08:30','退房,離開 Onna'],
-['08:45','おむすび茶屋 BURUNO(ブルーノ)早餐外帶','恩納村谷茶,每天 8:00 到 16:00,週二公休(1/14 是週四有開),有停車場,可外帶到海邊吃','約 300 到 600 日圓(我沒查到價格,這是飯糰一般價位)','豬肉蛋飯糰(ポークたまごおにぎり)、各種飯糰,看海吃'],
-['09:30','殘波岬','沿路景點,停 30 分鐘','通常免費','海岬步道、燈塔、看海'],
-['10:45','3COINS +plus 那霸 Main Place 店','在新都心歌町(おもろまち),晚上營業到 22:00,早上幾點開我沒查到,出發前看 Google Maps;同一棟有 HANDS,滿 5,500 日圓可退稅','平價雜貨,買多少付多少','逛生活雜貨、小物、廚房用品、伴手禮'],
-['12:15','糸滿魚市場(道之驛糸滿)海鮮丼、買伴手禮','お魚センター 9:00 到 18:00','入場免費,海鮮依選購付費','現場吃刺身、自己挑料做海鮮丼'],
-['14:00','好市多 南城倉庫店','需會員卡,一般店 10:00 到 20:00,南城請查官網','入場需會員卡,購物依選購付費','買伴手禮、零食、飲料'],
-['15:20','加油'],['16:15','還車','〒901-0221 沖縄縣豊見城市座安 315-7','','還車後搭接駁車去機場'],['17:00','機場報到,18:50 飛機']]},
-{id:'todo',m:'待辦',w:'',c:'--c6',t:'出發前待辦',chk:1,r:[
-['☐','訂位:酒喜膳、肉久茂地本店;鰓呼吸用 Japanticket 或電話 098-868-8388(Tabelog 不能訂);Churasun 6 在 KKday 訂票'],['☐','確認 Puchi Marry 3 歲小朋友能否入場'],['☐','釣魚探險之國:選官網、Klook 或 Over The Planet 訂票,比價後再買'],['☐','預約首里城正殿入場時段'],
-['☐','租車:兩台一起取,兒童座椅(3 歲),護照、駕照加日文譯本'],['☐','Uber 綁信用卡,飯店設成常用地點'],
-['☐','飯店訂單把小孩年齡改成 3 歲(目前寫不到 1 歲)'],['☐','Day 5 還車:豊見城市座安 315-7,確認營業時間、加油規定和接駁車'],['☐','確認 Onna villa 入住時間'],['☐','古宇利蝦蝦飯臨時休息會發 SNS,出發前看一下'],['☐','營業時間:好市多南城、牧志市場、Pet Box、釣魚探險之國、許田休息站、道之驛糸滿'],
-['☐','小朋友外套、推車或背巾,排好輪流留守的人']]}
-];
-var tabs=document.getElementById('tabs'), panels=document.getElementById('panels');
-function el(t,c,x){var e=document.createElement(t); if(c)e.className=c; if(x!=null)e.textContent=x; return e}
-D.forEach(function(d,i){
-  var b=el('button'); b.setAttribute('role','tab'); b.id='t-'+d.id; b.setAttribute('aria-controls','p-'+d.id);
-  b.style.setProperty('--tc','var('+d.c+')');
-  b.appendChild(el('small',null,d.w?('Day '+(i+1)):'清單')); b.appendChild(el('b',null,d.w?d.m+' '+d.w:d.m));
-  b.addEventListener('click',function(){show(d.id,true)});
-  tabs.appendChild(b);
-  var p=el('section'); p.setAttribute('role','tabpanel'); p.id='p-'+d.id; p.setAttribute('aria-labelledby','t-'+d.id); p.hidden=true;
-  p.style.setProperty('--tc','var('+d.c+')');
-  p.appendChild(el('div','ttl',d.w?(d.m+' '+d.w+'・'+d.t):d.t));
-  d.r.forEach(function(r){
-    var row=el('div','row'+(d.chk?' chk':'')); row.appendChild(el('span','tm',r[0]));
-    var tx=el('span','tx',r[1]); if(r[2]) tx.appendChild(el('span','nt',r[2])); if(r[3]) tx.appendChild(el('span','tk',r[3])); if(r[4]) tx.appendChild(el('span','pl',r[4])); row.appendChild(tx); p.appendChild(row);
-  });
-  panels.appendChild(p);
-});
-function show(id,push){
-  D.forEach(function(d){
-    var on=d.id===id, t=document.getElementById('t-'+d.id);
-    t.setAttribute('aria-selected',on); t.tabIndex=on?0:-1; document.getElementById('p-'+d.id).hidden=!on;
-    if(on&&push){try{history.replaceState(null,'','#'+id)}catch(e){} t.scrollIntoView({block:'nearest',inline:'center'}); window.scrollTo(0,0)}
-  });
-}
-tabs.addEventListener('keydown',function(e){
-  var i=D.findIndex(function(d){return document.getElementById('t-'+d.id).getAttribute('aria-selected')==='true'});
-  if(e.key==='ArrowRight')i=(i+1)%D.length; else if(e.key==='ArrowLeft')i=(i+D.length-1)%D.length; else return;
-  show(D[i].id,true); document.getElementById('t-'+D[i].id).focus();
-});
-function start(){
-  var h=location.hash.slice(1), ok=D.some(function(d){return d.id===h});
-  if(!ok){var n=new Date(), k=n.getFullYear()*10000+(n.getMonth()+1)*100+n.getDate();
-    h=(k>=20270110&&k<=20270114)?'d'+(k-20270109):'d1'}
-  show(h,false);
-}
-window.addEventListener('hashchange',start); start();
+{id:'d1',m:'1/10',w:'日',c:'--c1',t:'抵達、國際通',r:[['11:00','台中清泉崗機場二航廈集合'],['13:15','搭星宇航空 JX302 飛那霸'],['15:45','落地,單軌到飯店放行李','Hotel Urbansea 2 Matsuo,那霸市松尾 2 丁目 8-45'],['17:00','國際通逛街、伴手禮','','免費逛街,買多少付多少','藥妝、伴手禮、沖繩特產店'],['17:30','大創 The Daiso D-naha(國際通,4 樓)','10:00 到 21:00,在牧志 1 丁目,離美榮橋站近','百圓雜貨,買多少付多少','生活雜貨、美妝、零食、伴手禮小物'],['18:00','肉久茂地本店,再第二攤小量','要先訂位','約 3,000 到 7,000 日圓,低消每人一杯飲料','燒肉、和牛拼盤、厚切牛舌'],['20:00','西町 Elegran 彈珠店','18 歲以上才能進,小朋友不能帶','無入場費,依玩的量付費,我沒查到價格','彈珠機、柏青哥、老虎機'],['21:00','國際通隨便一間居酒屋 宵夜'],['23:00','回飯店,隔天可以睡晚一點']]},
+{id:'d2',m:'1/11',w:'一',c:'--c2',t:'取車日',r:[['08:30','飯店睡到飽,慢慢出門','先不趕早餐,等取車再吃'],['09:00','單軌到那霸機場站','從飯店搭單軌,記得把大件行李和兒童座椅需求確認好'],['09:30','機場外接駁車乘車處,搭租車公司免費接駁車','在航廈外中央分隔島或 14 號乘車區,Google 地圖評論說旺季人多、步行比較遠;10:00 前到租車公司取兩台車','免費接駁','兩台一起取,記得兒童座椅、護照、駕照和日文譯本'],['11:15','波之上朝豚食堂(あさとん食堂),當早午餐','每天 06:00 到 13:30,掃碼點餐,11:15 到還來得及','約 1,000 到 2,000 日圓','和牛粥、あさとん汁定食'],['12:00','波上宮','就在食堂旁邊,走路即可','參拜通常免費,御守另計','參拜、買御守、看海'],['12:30','分車:A 車親子組去沖繩兒童王國,B 車大人組去首里城','A 車約 40 分鐘,B 車約 20 分鐘','A 車:16 歲以上 1,000 日圓,15 歲以下免費(3 歲小朋友免費)','兒童王國約 150 種動物、神奇博物館、小火車和旋轉木馬(機動遊戲另收費)'],['13:00','B 車:首里城公園','正殿 2026/11/23 重新開放,進正殿要預約 30 分鐘一檔的時段','收費區大人 1,000 日圓','正殿、城牆、世界遺產城跡'],['13:45','B 車:達摩寺(首里赤田町)','每天 07:00 到 18:00,離首里城很近,先抓 30 分鐘','參拜費用我沒查到','參拜、買達摩御守(很搶手,建議早點到)、本堂天花板龍神圖'],['15:00','B 車:玉泉洞、沖繩世界(王國村)','最後入園 16:00,17:30 關門,約玩 1 小時 45 分','大人 2,000 日圓','玉泉洞鐘乳石洞、琉球王國城下町、太鼓表演'],['17:30','B 車:沖宮','24 小時開放,在奧武山公園裡;冬天約 18:00 天黑,結帳可刷台灣悠遊卡','參拜通常免費,御守另計','參拜、買御守、看海邊神社'],['18:20','B 車直接去久茂地,A 車從飯店過去,餐廳會合','A 車下午先回飯店休息、放東西'],['18:30','酒喜膳 Kazuki 晚餐','要先訂位,地址那霸市松山 1-15-20,離縣廳前站走路約 5 分鐘;套餐約 2 小時,免費取消到 3 天前','2 小時套餐,每人約 6,800 到 11,900 日圓(依肉種,FunNow 頁面資料),壽喜燒或涮涮鍋雙拼每人加 500 日圓','和牛壽喜燒、涮涮鍋、套餐'],['19:45','4 人去 Churasun 6 夜秀(ちゅらさん6)','其他人帶小朋友回飯店','入場費我沒查到,小費券另購;票可以在 KKday 訂(我查到有這個商品,Klook 沒查到)','夜間表演秀,買小費券可跟表演者合照'],['20:30','看秀,20:20 前到,約 22:00 結束','未滿 20 歲不能入場'],['22:15','鰓呼吸 久茂地店 海鮮居酒屋','週一營業到 24:00,食物最後點餐 23:00、飲料 23:30,所以 2 小時暢飲喝不滿;訂位:Tabelog 頁面寫不能訂,改用 Japanticket 網站或打電話 098-868-8388','2 小時暢飲 1,870 日圓(含一杯生啤),生啤暢飲加 550 日圓','烤扇貝、烤鮪魚下巴、海葡萄'],['23:45','叫 Uber 回飯店']]},
+{id:'d3',m:'1/12',w:'二',c:'--c3',t:'市場、貓咖啡、釣魚樂園',r:[['09:30','退房'],['10:00','牧志公設市場 吃海鮮','','入場免費,海鮮依選購付費,2 樓代煮另收費','1 樓挑海鮮,2 樓請店家煮'],['12:30','美國村 寵物用品 Pet Box 北谷店','約 19:00 關門','逛街免費','寵物食品、用品'],['13:15','Puchi Marry 貓咪咖啡廳','先確認 3 歲小朋友能否入場','包日約 2,300 日圓(平日)、2,500 日圓(週末),未稅,舊資料','和小貓玩、飲料續杯'],['15:15','釣魚探險之國 沖繩(釣って見つけるぼうけんの国)','18:00 打烊,平日 12:00 開,週五公休;門票可在官網(boukennokuni.com)、Klook、Over The Planet 線上訂','小學生以下 50 分鐘約 500 日圓,國中以上約 800 日圓,資料不一致','釣熱帶魚、寶石挖掘、化石、釣螯蝦和寄居蟹'],['17:30','入住 Onna 泳池 villa','グランディオーソ沖縄プールヴィラ恩納13,恩納村仲間 2288;入住 16:00 到 23:00,晚到要先告知'],['18:30','晚餐自煮或超市熟食']]},
+{id:'d4',m:'1/13',w:'三',c:'--c4',t:'漁師食堂、古宇利',r:[['09:00','從 villa 出發去本部','車程約 40 到 50 分鐘'],['10:00','漁師食堂 大盤振舞(大ばんぶる舞)午餐','每天 10:00 到 16:00,一開門就到,進店寫名字和人數候位,鰻魚飯要直接跟店員點','約 1,000 到 2,000 日圓,份量大,可共食','烤鰻魚飯、海鮮定食'],['12:45','KOURI SHRIMP 古宇利蝦蝦飯(古宇利島)','每天 11:00 到 16:00(點餐到 15:00),不能訂位,可刷卡;臨時休息會在 SNS 公告;漁師食堂吃很飽的話可以當點心共食','約 1,000 到 2,000 日圓','蒜味蝦飯、香辣奶油蒜蝦、巴西莓碗'],['13:30','古宇利海塔','10:00 到 18:00,最後入園 17:30','16 歲以上 1,000 日圓,6 到 15 歲 500 日圓,6 歲以下免費(3 歲小朋友免費)','自動小車、貝殼博物館、82 公尺展望塔'],['15:15','許田休息站(道の駅許田)','休息、買甜點','入場免費','山原特產、伴手禮'],['16:15','回 villa 休息','小朋友午睡、泳池'],['17:15','万座毛(恩納村)看夕陽','11 到 2 月開到 19:00,冬天日落約 17:50,日落前 15 到 20 分鐘到;風大注意安全,停留在圍欄內','展望台約 100 日圓,小學以下免費(我查到的舊資料)','象鼻岩、海崖、夕陽剪影'],['18:30','晚餐','villa 附近或自煮']]},
+{id:'d5',m:'1/14',w:'四',c:'--c5',t:'沿路南下、糸滿、回家',r:[['08:30','退房,離開 Onna','villa 退房時間是 10:00 前'],['08:45','おむすび茶屋 BURUNO(ブルーノ)早餐外帶','恩納村谷茶,每天 8:00 到 16:00,週二公休(1/14 是週四有開),有停車場,可外帶到海邊吃','約 300 到 600 日圓(我沒查到價格,這是飯糰一般價位)','豬肉蛋飯糰(ポークたまごおにぎり)、各種飯糰,看海吃'],['09:30','殘波岬','沿路景點,停 30 分鐘','通常免費','海岬步道、燈塔、看海'],['10:45','3COINS +plus 那霸 Main Place 店','在新都心歌町(おもろまち),晚上營業到 22:00,早上幾點開我沒查到,出發前看 Google Maps;同一棟有 HANDS,滿 5,500 日圓可退稅','平價雜貨,買多少付多少','逛生活雜貨、小物、廚房用品、伴手禮'],['12:15','糸滿魚市場(道之驛糸滿)海鮮丼、買伴手禮','お魚センター 9:00 到 18:00','入場免費,海鮮依選購付費','現場吃刺身、自己挑料做海鮮丼'],['14:00','好市多 南城倉庫店(含加油)','需會員卡(國際電子會員卡):打開好市多 app → 我的帳戶 → 國際電子會員卡出示,或請工作人員過卡;一般店 10:00 到 20:00,南城請查官網;逛完順便在好市多加油,還車前加滿(加油站是否也需會員卡、幾點開,我沒查到,出發前確認)','入場需會員卡,購物依選購付費','買伴手禮、零食、飲料'],['16:15','還車','〒901-0221 沖縄縣豊見城市座安 315-7','','還車後搭接駁車去機場'],['17:00','機場報到,18:50 飛機']]},
+{id:'todo',m:'待辦',w:'',s:'清單',c:'--c6',t:'出發前待辦',chk:1,r:[['☐','訂位:酒喜膳、肉久茂地本店;鰓呼吸用 Japanticket 或電話 098-868-8388(Tabelog 不能訂);Churasun 6 在 KKday 訂票'],['☐','確認 Puchi Marry 3 歲小朋友能否入場'],['☐','釣魚探險之國:選官網、Klook 或 Over The Planet 訂票,比價後再買'],['☐','預約首里城正殿入場時段'],['☐','租車:兩台一起取,兒童座椅(3 歲),護照、駕照加日文譯本'],['☐','Uber 綁信用卡,飯店設成常用地點'],['☐','飯店訂單把小孩年齡改成 3 歲(目前寫不到 1 歲)'],['☐','Day 5 還車:豊見城市座安 315-7,確認營業時間、加油規定和接駁車'],['☐','Onna villa:入住 16:00 到 23:00,退房 10:00 前;預計 17:30 到,確認自助入住方式'],['☐','古宇利蝦蝦飯臨時休息會發 SNS,出發前看一下'],['☐','營業時間:好市多南城、牧志市場、Pet Box、釣魚探險之國、許田休息站、道之驛糸滿'],['☐','好市多 app 先登入,確認「國際電子會員卡」打得開(進場和加油用)'],['☐','出發前 3 天看天氣預報(看頁面最上方的天氣),決定穿著'],['☐','小朋友外套、推車或背巾,排好輪流留守的人']]}];
+var tabs=document.getElementById('tabs'),panels=document.getElementById('panels');
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+D.forEach(function(d,i){var b=el('button');b.setAttribute('role','tab');b.id='t-'+d.id;b.setAttribute('aria-controls','p-'+d.id);b.style.setProperty('--tc','var('+d.c+')');b.append(el('small',null,d.s?d.s:(d.w?'Day '+(i+1):'清單')),el('b',null,(d.w&&!d.s)?d.m+' '+d.w:d.m));b.addEventListener('click',function(){show(d.id,true)});tabs.appendChild(b);var p=el('section');p.setAttribute('role','tabpanel');p.id='p-'+d.id;p.setAttribute('aria-labelledby','t-'+d.id);p.hidden=true;p.style.setProperty('--tc','var('+d.c+')');p.appendChild(el('div','ttl',(d.w&&!d.s)?d.m+' '+d.w+'・'+d.t:d.t));d.r.forEach(function(r){var row=el('div','row'+(d.chk?' chk':''));row.appendChild(el('span','tm',r[0]));var tx=el('span','tx',r[1]);if(r[2])tx.appendChild(el('span','nt',r[2]));if(r[3])tx.appendChild(el('span','tk',r[3]));if(r[4])tx.appendChild(el('span','pl',r[4]));var q=r[5]?null:MQ[r[1]],ls=[];if(r[5])ls.push([r[6]||'連結',r[5]]);else if(typeof q==='string')ls.push(['地圖','https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q)]);else if(q)q.forEach(x=>ls.push(['地圖:'+x[0],'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(x[1])]));var bk=BK[r[1]];if(bk){var bp=el('span','mp');bk.forEach(x=>{var a=el('a','bk',x[0]);a.href=x[1];if(!x[1].startsWith('tel:')){a.target='_blank';a.rel='noopener'}bp.appendChild(a)});tx.appendChild(bp)}if(ls.length){var mp=el('span','mp');ls.forEach(x=>{var a=el('a',null,(x[1].indexOf('maps')>0?'📍 ':'🔗 ')+x[0]);a.href=x[1];a.target='_blank';a.rel='noopener';mp.appendChild(a)});tx.appendChild(mp)}row.appendChild(tx);p.appendChild(row)});panels.appendChild(p)});
+function show(id,push){D.forEach(d=>{var on=d.id===id,t=document.getElementById('t-'+d.id);t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;document.getElementById('p-'+d.id).hidden=!on;if(on&&push){try{history.replaceState(null,'','#'+id)}catch(e){}t.scrollIntoView({block:'nearest',inline:'center'});window.scrollTo(0,0)}})}
+tabs.addEventListener('keydown',function(e){var i=D.findIndex(d=>document.getElementById('t-'+d.id).getAttribute('aria-selected')==='true');if(e.key==='ArrowRight')i=(i+1)%D.length;else if(e.key==='ArrowLeft')i=(i+D.length-1)%D.length;else return;show(D[i].id,true);document.getElementById('t-'+D[i].id).focus()});
+function start(){var h=location.hash.slice(1),ok=D.some(d=>d.id===h);if(!ok){var n=new Date(),k=n.getFullYear()*10000+(n.getMonth()+1)*100+n.getDate();h=(k>=20270110&&k<=20270114)?'d'+(k-20270109):'d1'}show(h,false)}
+window.addEventListener('hashchange',start);start();
+
+/* 天氣：JMA AMeDAS 測站實況 + Open-Meteo 預報 */
+(function(){
+const places=[{name:'那霸',lat:26.2124,lon:127.6809},{name:'美國村',lat:26.3173,lon:127.7578},{name:'恩納村',lat:26.4978,lon:127.8536},{name:'名護',lat:26.5915,lon:127.9774},{name:'古宇利島',lat:26.6942,lon:128.0167}];
+const JMA='https://www.jma.go.jp/bosai/amedas',OM='https://api.open-meteo.com/v1/forecast';
+const C={0:['☀️','晴天'],1:['🌤️','大致晴朗'],2:['⛅','多雲時晴'],3:['☁️','陰天'],45:['🌫️','有霧'],48:['🌫️','霧'],51:['🌦️','毛毛雨'],53:['🌦️','小雨'],55:['🌧️','中雨'],61:['🌧️','小雨'],63:['🌧️','中雨'],65:['🌧️','大雨'],80:['🌦️','短暫陣雨'],81:['🌧️','陣雨'],82:['⛈️','強陣雨'],95:['⛈️','雷雨'],96:['⛈️','雷雨及冰雹'],99:['⛈️','強雷雨']};
+const $=id=>document.getElementById(id),make=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e};
+const valid=v=>Array.isArray(v)&&v.length>=2&&v[1]===0&&typeof v[0]==='number'?v[0]:null;
+const coord=a=>a[0]+a[1]/60;
+const dist=(a,b,c,d)=>{const x=(c-a)*Math.PI/180,y=(d-b)*Math.PI/180;return 6371*2*Math.asin(Math.sqrt(Math.sin(x/2)**2+Math.cos(a*Math.PI/180)*Math.cos(c*Math.PI/180)*Math.sin(y/2)**2))};
+const tm=t=>{const m=String(t).match(/(\d\d)-(\d\d)T(\d\d:\d\d)/);return m?(+m[1])+'/'+(+m[2])+' '+m[3]:String(t)};
+const dir=v=>{if(v===null)return '—';if(v===0)return '靜穩';const names=['靜穩','北北東','東北','東北東','東','東南東','東南','南南東','南','南南西','西南','西南西','西','西北西','西北','北北西','北'];return names[v]||'—'};
+let selected=0,results=[],busy=false,table=null;
+const box=$('wxPlaces'),refresh=$('wxRefresh');
+places.forEach((p,i)=>{const b=make('button','wxplace');b.type='button';b.addEventListener('click',()=>{selected=i;renderPlaces();renderDetail()});b.append(make('b',null,p.name),make('span',null,'⏳'),make('small',null,'載入中'));box.appendChild(b)});
+function renderPlaces(){[...box.children].forEach((b,i)=>{b.classList.toggle('active',i===selected);const d=results[i];b.replaceChildren(make('b',null,places[i].name),make('span',null,d?'🌡️':'—'),make('small',null,d?fmt(valid(d.obs.temp),'°C'):'暫無資料'))})}
+function fmt(v,u=''){return v===null||v===undefined?'—':(Math.round(v*10)/10)+u}
+async function getJMA(){if(!table){const r=await fetch(JMA+'/const/amedastable.json',{cache:'no-store'});if(!r.ok)throw Error('JMA 測站清單讀取失敗');table=await r.json()}
+const tr=await fetch(JMA+'/data/latest_time.txt',{cache:'no-store'});if(!tr.ok)throw Error('JMA 最新時間讀取失敗');const latest=(await tr.text()).trim();const stamp=latest.replace(/\D/g,'').slice(0,14);const mr=await fetch(JMA+'/data/map/'+stamp+'.json',{cache:'no-store'});if(!mr.ok)throw Error('JMA 測站觀測資料讀取失敗');return{map:await mr.json(),latest}}
+function nearest(p,map){let best=null;Object.keys(table).forEach(id=>{const s=table[id],o=map[id];if(!o||!s.lat||!s.lon)return;const t=valid(o.temp);if(t===null)return;const km=dist(p.lat,p.lon,coord(s.lat),coord(s.lon));if(!best||km<best.km)best={id,s,o,km}});return best}
+async function forecast(p){const u=OM+'?latitude='+p.lat+'&longitude='+p.lon+'&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,precipitation_probability,precipitation,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=7&temperature_unit=celsius&wind_speed_unit=kmh&precipitation_unit=mm';const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw Error('預報服務暫時無法使用');return r.json()}
+function renderDetail(){const d=results[selected];if(!d)return;const o=d.o,obs=d.obs,fc=d.forecast.current,w=valid(obs.wind),wd=valid(obs.windDirection),rain=valid(obs.precipitation1h),hum=valid(obs.humidity),temp=valid(obs.temp);
+$('wnI').textContent=(C[fc.weather_code]||['🌡️','天氣'])[0];$('wnT').textContent=places[selected].name+' '+fmt(temp,'°C')+'｜測站實測';$('wnS').textContent='JMA 測站：'+d.station.s.kjName+'｜距離約 '+Math.round(d.station.km)+' 公里｜日本時間 '+tm(d.latest);
+const stats=$('wxStats');stats.replaceChildren();[['🌡️ 實測氣溫',fmt(temp,'°C')],['💧 相對濕度',fmt(hum,'%')],['💨 平均風速',fmt(w,' m/s')],['🧭 風向',dir(wd)],['🌧️ 1小時雨量',fmt(rain,' mm')],['☀️ 體感溫度（預報模型）',fmt(fc.apparent_temperature,'°C')]].forEach(x=>{const b=make('div','wxstat');b.append(make('b',null,x[0]),make('div',null,x[1]));stats.appendChild(b)});
+const h=d.forecast.hourly,hb=$('wxHour');hb.replaceChildren();let start=h.time.findIndex(t=>new Date(t).getTime()>=Date.now());if(start<0)start=0;for(let i=start;i<Math.min(start+24,h.time.length);i++){const wc=C[h.weather_code[i]]||['🌡️','天氣'];const item=make('div','wxhouritem');item.append(make('b',null,h.time[i].slice(11,16)),make('div','e',wc[0]),make('div',null,fmt(h.temperature_2m[i],'°')),make('small',null,'雨 '+fmt(h.precipitation_probability[i],'%')),make('small',null,fmt(h.precipitation[i],' mm')));hb.appendChild(item)}
+const days=d.forecast.daily,db=$('wDays'),week=['日','一','二','三','四','五','六'];db.replaceChildren();days.time.forEach((date,i)=>{const day=new Date(date+'T12:00:00+09:00'),wc=C[days.weather_code[i]]||['🌡️','天氣'];const item=make('div','wd');item.append(make('small',null,(day.getMonth()+1)+'/'+day.getDate()+' '+week[day.getDay()]),make('span','e',wc[0]),make('b',null,Math.round(days.temperature_2m_min[i])+'–'+Math.round(days.temperature_2m_max[i])+'°'),make('i',null,'雨 '+fmt(days.precipitation_probability_max[i],'%')));db.appendChild(item)});
+$('wCap').textContent='現在實況：日本氣象廳 JMA AMeDAS 地面測站（測站 '+d.station.s.kjName+'，距景點約 '+Math.round(d.station.km)+' km）｜觀測時間 '+tm(d.latest)+'。逐小時與7日為 Open-Meteo 預報模型，並非實測。';
+$('wxTime').textContent='🌺 五地天氣｜JMA 最新觀測 '+tm(d.latest)}
+async function load(){if(busy)return;busy=true;refresh.disabled=true;refresh.textContent='更新中…';$('wxTime').textContent='正在更新 JMA 實測及天氣預報…';try{const j=await getJMA();const settled=await Promise.allSettled(places.map(async p=>{const station=nearest(p,j.map);if(!station)throw Error('附近沒有有效測站');const f=await forecast(p);return{station,o:station.o,obs:station.o,forecast:f,latest:j.latest}}));results=settled.map(r=>r.status==='fulfilled'?r.value:null);renderPlaces();if(results[selected])renderDetail();else{const i=results.findIndex(Boolean);if(i>=0){selected=i;renderPlaces();renderDetail()}else throw Error('目前沒有可用測站資料')}}catch(e){console.error(e);$('wxTime').textContent='更新失敗｜保留上次成功資料';$('wCap').textContent='無法取得最新觀測，請稍後按「更新」。若持續失敗，可能是 JMA 端點或瀏覽器跨網域限制。'}finally{refresh.disabled=false;refresh.textContent='↻ 更新';busy=false}}
+refresh.addEventListener('click',load);load();setInterval(load,10*60*1000);
+})();
 </script>
 </body>
 </html>
